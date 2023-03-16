@@ -1,1 +1,1 @@
-MORE C MALLOCS, CALLOC AND REALLOC  + FREE 
+C malloc, calloc, realloc and free
