@@ -1,5 +1,5 @@
-#include <stdlib.h>
 #include "lists.h"
+#include <stdlib.h>
 
 /**
  * get_nodeint_at_index - Finds the nth node in listint_t list
@@ -16,7 +16,7 @@ listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 	if (head == NULL)
 		return (NULL);
 
-	for (curr; curr < index; curr++)
+	for (curr = 0; curr < index; curr++)
 	{
 		head = head->next;
 		if (head == NULL)
