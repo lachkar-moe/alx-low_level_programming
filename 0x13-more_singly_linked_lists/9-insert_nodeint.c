@@ -1,43 +1,49 @@
 #include "lists.h"
-#include <srdlib.h>
+#include <stdlib.h>
 
 /**
- * insert_nodeint_at_index - inserts a new node at a given position
- * @head: double pointer to the head of the listint_t linked list
- * @idx: the index of the list where the new node should be added
- * @n: element/property n of the node to be added
- * Return: address of the new element (SUCCESS), or
- * NULL if it failed (FAILURE), or
- * NULL if is not possible to add the new node at index @idx
- */
-
-
+ * insert_nodeint_at_index - Inserts a new node at a given position.
+ * @head: Pointer to pointer of first node.
+ * @index: Index of the list where the new node should be added.
+ * @n: Data to be stored in the new node.
+ *
+ * Return: Address of the new node, or NULL if it failed.
+ **/
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
-	listint_t *created_node, *tempo;
-	unsigned int i = 0;
+	listint_t *new_node, *current;
+	unsigned int count = 0;
 
-	if (*head == NULL && idx != 0)
+	if (*head == NULL && index != 0)
 		return (NULL);
 
-	if (idx != 0)
+	current = *head;
+	while (current != NULL && count < index - 1)
 	{
-	tempo = *head;
-	for (; i < idx - 1 && tempo != NULL; i++)
-		tempo = tempo->next;
-	if (tempo == NULL)
+		current = current->next;
+		count++;
+	}
+
+	if (count < index - 1 || (count == 0 && index > 0))
 		return (NULL);
-	}
 
-	created_node->n = n;
-	if (idx == 0)
+	new_node = malloc(sizeof(listint_t));
+	if (new_node == NULL)
+		return (NULL);
+
+	new_node->n = n;
+
+	if (index == 0 || *head == NULL)
 	{
-		created_node->next = *head;
-		*head = created_node;
-		return (created_node);
+		new_node->next = *head;
+		*head = new_node;
+	}
+	else
+	{
+		new_node->next = current->next;
+		current->next = new_node;
 	}
 
-	created_node->next = tempo->next;
-	tempo->next = created_node;
-	return (created_node);
+	return (new_node);
 }
+
