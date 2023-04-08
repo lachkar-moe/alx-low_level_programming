@@ -2,10 +2,10 @@
 #include <stdlib.h>
 
 /**
- * set_bit - sets value of a bit to 1 at a given index
- * @n: decimal number passed by pointer
- * @index: index start frm  0
- * Return: 1, -1 if error
+ * set_bit - sets value of a certain bit
+ * @n: decimal number by pointer
+ * @index: start frm  0
+ * Return: 1 for success, -1 if error
  */
 
 int set_bit(unsigned long int *n, unsigned int index)
@@ -20,6 +20,6 @@ int set_bit(unsigned long int *n, unsigned int index)
 		;
 
 	*n = *n + i;
-	
+
 	return (1);
 }
