@@ -13,7 +13,7 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
 	unsigned long int tempo = n ^ m;
 	unsigned int i = 0;
 ;
-	while (!tempo)
+	while (tempo != 0)
 	{
 		i += tempo & 1;
 		tempo >>= 1;
