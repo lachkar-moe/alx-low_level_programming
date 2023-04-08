@@ -1,10 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "main.h"
 
 /**
  * binary_to_uint - converts a binary number to an unsigned int
- * @b: binary number
+ * @b: string has the binary number
  *
  * Return: 0 or converted number
  */
@@ -12,7 +10,7 @@
 unsigned int binary_to_uint(const char *b)
 {
 	int i;
-	unsigned int number;
+	unsigned int number = 0;
 
 	if (!b)
 		return (0);
