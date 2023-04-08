@@ -11,24 +11,19 @@
 
 unsigned int binary_to_uint(const char *b)
 {
+	int i;
 	unsigned int number;
-	const char *clone = b;
 
-	while (*clone != '\0')
+	if (b != '\0')
+		return (0);
+
+
+	for (i = 0; b[i]; i++)
 	{
-		if (*clone == '0' || *clone == '1')
-		{
-			number = number << 1;
-			if (*clone == '1')
-			{
-				number = number | 1;
-			}
-		} else
-		{
+		if (b[i] < '0' || b[i] > '1')
 			return (0);
-		}
-		clone++;
-	}
 
+		number = 2 * number + (b[i] - '0');
+	}
 	return (number);
 }
