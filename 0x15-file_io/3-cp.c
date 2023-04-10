@@ -11,7 +11,8 @@
 int main(int argc, char *argv[])
 {
 
-	int f_open, f_write, bytes_read, j, k;
+	int n = 0;
+	int f_open, f_write, j, k;
 	char buffer[BUFSIZ];
 
 	if (argc != 3)
@@ -28,9 +29,9 @@ int main(int argc, char *argv[])
 	}
 
 	f_write = open(argv[2],  O_CREAT | O_WRONLY | O_TRUNC, 0664);
-	while ((bytes_read == read(f_open, buffer, BUFSIZ)) > 0)
+	while ((n == read(f_open, buffer, BUFSIZ)) > 0)
 	{
-		if (f_write < 0 || write(f_write, buffer, bytes_read) != bytes_read)
+		if (f_write < 0 || write(f_write, buffer, n) != n)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			close(f_open);
@@ -39,7 +40,7 @@ int main(int argc, char *argv[])
 	}
 
 
-	if (bytes_read < 0)
+	if (n < 0)
 	{
 	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 	exit(98);
