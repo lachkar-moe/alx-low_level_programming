@@ -11,8 +11,7 @@
 int main(int argc, char *argv[])
 {
 
-	int n = 0;
-	int f_open, f_write, j, k;
+	int f_open, f_write, n, j, k;
 	char buffer[BUFSIZ];
 
 	if (argc != 3)
@@ -27,7 +26,7 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s", argv[1]);
 		exit(98);
 	}
-
+	n = read(f_open, buffer, BUFSIZ);
 	f_write = open(argv[2],  O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	while ((n == read(f_open, buffer, BUFSIZ)) > 0)
 	{
